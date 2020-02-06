@@ -32,6 +32,7 @@
         # 'views/klinik_dashboard_view.xml',
         'views/poli_dashboard_view.xml',
         'views/appointment_view.xml',
+        'views/klinik_setting_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

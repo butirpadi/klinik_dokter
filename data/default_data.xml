@@ -11,5 +11,10 @@
             <field name="padding">4</field>
         </record>
 
+        <record forcecreate="True" id="default_product_category_poliklinik" model="klinik.setting">
+            <field name="name">product_category_poliklinik</field>
+            <field name="value"></field>
+        </record>
+
     </data>
 </odoo>

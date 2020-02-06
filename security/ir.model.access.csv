@@ -3,3 +3,4 @@ access_klinik_dokter_queue_list,klinik_dokter.queue_list,model_queue_list,base.g
 access_klinik_dokter_product_queue_list_rel,klinik_dokter.product_queue_list_rel,model_product_queue_list_rel,base.group_user,1,1,1,1
 access_klinik_dokter_res_poli,klinik_dokter.res_poli,model_res_poli,base.group_user,1,1,1,1
 access_klinik_dokter_klinik_dashboard,klinik_dokter.klinik_dashboard,model_klinik_dashboard,base.group_user,1,1,1,1
+access_klinik_dokter_klinik_setting,klinik_dokter.klinik_setting,model_klinik_setting,base.group_user,1,1,1,1

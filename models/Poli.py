@@ -1,4 +1,6 @@
 from odoo import models, fields, api
+from odoo.exceptions import UserError
+from pprint import pprint
 
 
 class Poli(models.Model):
@@ -17,14 +19,14 @@ class Poli(models.Model):
 
     @api.model
     def create(self, values):
-
+        
         # create product of this poli on created
         new_prod = self.env['product.template'].create({
             'name': 'Pendaftaran ' + values['name'],
             'type': 'service',
-            'categ_id': self.env['product.category'].search([('is_poli_product_category', '=', True)], limit=1).id,
-            'sale_ok' : True,
-            'purchase_ok' : False
+            'categ_id': self.env['klinik.setting'].search([('name','=','product_category_poliklinik')], limit=1).value,
+            'sale_ok': True,
+            'purchase_ok': False
         })
         values['product_id'] = new_prod.id
 
@@ -44,6 +46,5 @@ class Poli(models.Model):
                 [('id', '=', link_product_id)]).unlink()
 
         result = super(Poli, self).unlink()
-
 
         return result

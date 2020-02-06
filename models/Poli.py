@@ -19,6 +19,11 @@ class Poli(models.Model):
     )
     jumlah_antrian = fields.Integer('Jumlah Antrian', default=0)
 
+    def reset_antrian(self):
+        self.write({
+            'jumlah_antrian' : 0
+        })
+
     @api.model
     def create(self, values):
         

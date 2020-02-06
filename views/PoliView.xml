@@ -8,6 +8,7 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
+                    <field name="jumlah_antrian"/>
                 </tree>
             </field>
         </record>
@@ -19,6 +20,7 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
+                        <button name="reset_antrian" type="object" class="btn btn-default" string="Reset Antrian" confirm="Are you sure ?" />
                     </header>
                     <sheet>
                         <group>

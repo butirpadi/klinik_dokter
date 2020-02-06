@@ -5,6 +5,7 @@ from pprint import pprint
 
 class Poli(models.Model):
     _name = 'res.poli'
+    _inherit = ['image.mixin']
 
     name = fields.Char(string='Name')
     color = fields.Integer(string="Color", default=0)

@@ -1,6 +1,6 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
-from pprint import pprint 
+from pprint import pprint
 
 
 class SaleOrder(models.Model):
@@ -8,14 +8,26 @@ class SaleOrder(models.Model):
 
     rm_no = fields.Char(related='partner_id.rm_no', store=True)
     poli_id = fields.Many2one('res.poli', string='Poliklinik')
+    is_appointment_order = fields.Boolean(
+        'Is Appointment Order', default=False)
+
+    def action_confirm(self):
+        res = super(SaleOrder, self).action_confirm()
+
+        # add antrian ke poli
+        if self.is_appointment_order:
+            self.poli_id.write({
+                'jumlah_antrian': self.poli_id.jumlah_antrian+1
+            })
+
+        return res
 
     @api.model
     def create(self, values):
-    
+
         result = super(SaleOrder, self).create(values)
-    
+
         return result
-    
 
     @api.onchange('poli_id')
     def poli_onchange(self):
@@ -41,4 +53,3 @@ class SaleOrder(models.Model):
             }))
 
         self.order_line = order_line_prd
-        

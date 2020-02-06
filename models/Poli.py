@@ -16,6 +16,7 @@ class Poli(models.Model):
         column2='product_id',
         string='Appointment Template'
     )
+    jumlah_antrian = fields.Integer('Jumlah Antrian', default=0)
 
     @api.model
     def create(self, values):

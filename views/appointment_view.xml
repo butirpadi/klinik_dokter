@@ -47,13 +47,13 @@
 
                 </xpath> -->
                 <xpath expr="//field[@name='partner_id']" position="attributes">
-                    <attribute name="domain" >[('is_patient','=',1)]</attribute>
+                    <attribute name="domain">[('is_patient','=',1)]</attribute>
                 </xpath>
 
                 <xpath expr="//field[@name='partner_id']" position="after">
                     <field name="rm_no" string ="MR No." />
                     <field name="poli_id" options="{ 'no_open': True, 'no_create' : True, 'no_edit' : True}" required="1" />
-
+                    <field name="is_appointment_order" invisible="1" />
                 </xpath>
                 <xpath expr="//field[@name='partner_id']" position="attributes">
                     <attribute name="string">Pasien</attribute>
@@ -91,9 +91,15 @@
             <field name="name">Appointment Order</field>
             <field name="res_model">sale.order</field>
             <field name="view_mode">tree,form</field>
+            <field name="context">{'default_is_appointment_order':1}</field>
             <field name="view_ids" eval="[(5, 0, 0),
             (0, 0, {'view_mode': 'tree', 'view_id': ref('klinik_view_order_tree_inherited')}),
             (0, 0, {'view_mode': 'form', 'view_id': ref('klinik_view_order_form')})]"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new Appointment Order, the first step of a new order!
+              </p>
+            </field>
         </record>
 
         <menuitem id="menu_appointment_order" name="Appointment Order" parent="menu_appointment_toolbar" action="appointment_order_action" sequence="1"/>

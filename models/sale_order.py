@@ -11,8 +11,6 @@ class SaleOrder(models.Model):
 
     @api.model
     def create(self, values):
-        
-        pprint(values)
     
         result = super(SaleOrder, self).create(values)
     
@@ -21,6 +19,10 @@ class SaleOrder(models.Model):
 
     @api.onchange('poli_id')
     def poli_onchange(self):
+        # unlkink product from last data
+        if len(self.order_line) > 0:
+            self.order_line = [(5, False, False)]
+
         # add product
         order_line_prd = []
         for prod in self.poli_id.product_template_ids:

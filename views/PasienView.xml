@@ -13,6 +13,13 @@
                 <field name="city" position="before">
                     <field name="street" />
                 </field>
+                <field name="display_name" position="after">
+                    <field name="sex" string="Jenis Kelamin" />
+                    <field name="tanggal_lahir" />
+                </field>
+                <xpath expr="//field[@name='email']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
             </field>
         </record>
 
@@ -75,6 +82,16 @@
 
                 <xpath expr="//notebook" position="attributes">
                     <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="sex" stirng="Jenis Kelamin" />
+                </xpath>
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="tempat_lahir" />
+                    <field name="tanggal_lahir" />
+                    <field name="usia" />
+                    <field name="blood_type" />
                 </xpath>
             </field>
         </record>

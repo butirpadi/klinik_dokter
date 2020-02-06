@@ -30,6 +30,9 @@
                         <b>Address</b>
                     </label>
                 </label>
+                <field name="type" position="after">
+                    <field name="is_patient" invisible="1" />
+                </field>
                 <field name="type" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </field>
@@ -58,7 +61,7 @@
                     <field name="mobile" />
                 </field>
                 <field name="website" position="replace" />
-                
+
                 <xpath expr="//field[@name='name']" position="replace">
                     <field name="rm_no" readonly="1"/>
                 </xpath>
@@ -69,7 +72,7 @@
                     <field name="name" />
                 </field>
                 <field name="image_1920" position="replace" />
-                
+
                 <xpath expr="//notebook" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
@@ -80,7 +83,8 @@
             <field name="name">Pasien</field>
             <field name="res_model">res.partner</field>
             <field name="view_mode">tree,form</field>
-            <field name="context">{'search_default_customer': 1,'res_partner_search_mode': 'customer', 'default_is_company': False, 'default_company_type':'person', 'default_customer_rank': 1}</field>
+            <field name="domain">[('is_patient','=',1)]</field>
+            <field name="context">{'default_is_patient':1,'search_default_customer': 1,'res_partner_search_mode': 'customer', 'default_is_company': False, 'default_company_type':'person', 'default_customer_rank': 1}</field>
             <field name="view_ids" eval="[(5, 0, 0),
                 (0, 0, {'view_mode': 'tree', 'view_id': ref('klinik_dokter.pasien_tree_view')}),
                 (0, 0, {'view_mode': 'form', 'view_id': ref('klinik_dokter.pasien_form_view')})]"/>

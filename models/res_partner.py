@@ -11,9 +11,9 @@ class ResPartner(models.Model):
     @api.model
     def create(self, values):
 
-        values['rm_no'] = self.env['ir.sequence'].next_by_code(
-            'pasien.register.sequence') or _('New')
-        values['is_patient'] = True
+        if 'is_patient' in values :
+            values['rm_no'] = self.env['ir.sequence'].next_by_code(
+                'pasien.register.sequence') or _('New')        
 
         result = super(ResPartner, self).create(values)
 

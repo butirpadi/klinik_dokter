@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record model="ir.ui.view" id="poli_tree">
+            <field name="name">poli.tree</field>
+            <field name="model">res.poli</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record model="ir.ui.view" id="poli_form">
+            <field name="name">poli.form</field>
+            <field name="model">res.poli</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="product_template_ids" options="{'no_edit':True,'no_create' : True}">
+                                <tree editable="bottom">
+                                    <field name="name" options="{'no_create': True}" />
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="poli_action">
+            <field name="name">Poliklinik</field>
+            <field name="res_model">res.poli</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_poli" name="Poliklinik" parent="menu_klinik_configuration_toolbar" action="poli_action" sequence="3"/>
+
+    </data>
+</odoo>

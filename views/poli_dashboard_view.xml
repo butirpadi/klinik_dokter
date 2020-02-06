@@ -1,0 +1,67 @@
+<odoo>
+    <record id="poli_dashboard_kanban_view" model="ir.ui.view">
+        <field name="name">poli.dashboard.kanban.view</field>
+        <field name="model">res.poli</field>
+        <field name="arch" type="xml">
+            <kanban create="false" class="oe_background_grey o_kanban_dashboard o_account_kanban" >
+                <field name="id"/>
+                <field name="name"/>
+                <field name="color"/>
+                <!-- <field name="show_on_dashboard"/> -->
+                <!-- <field name="kanban_dashboard"/> -->
+                <!-- <field name="activity_ids"/> -->
+                <!-- <field name="activity_state"/> -->
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''}">
+                            <t t-call="JournalTop"/>
+                            <div t-att-class="'container o_kanban_card_content'">
+                                <div class="row">
+                                    
+                                </div>
+                            </div>
+                            <div class="container o_kanban_card_manage_pane dropdown-menu" role="menu">
+
+                            </div>
+                        </div>
+                    </t>
+
+                    <t t-name="JournalTop">
+                        <div t-attf-class="o_kanban_card_header">
+                            <div class="o_kanban_card_header_title">
+                                <div class="o_primary">
+                                    <a type="object" name="open_action">
+                                        <field name="name"/>
+                                    </a>
+                                </div>
+                                <div class="o_secondary">
+                                    <!-- <field name="type"/> -->
+                                </div>
+                            </div>
+                            <div class="o_kanban_manage_button_section">
+                                <a class="o_kanban_manage_toggle_button" href="#">
+                                    <i class="fa fa-ellipsis-v" aria-label="Selection" role="img" title="Selection"/>
+                                </a>
+                            </div>
+                        </div>
+                    </t>
+
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="poli_dashboard_kanban_action" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="res_model">res.poli</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="view_id" ref="poli_dashboard_kanban_view"/>
+        <!-- <field name="usage">menu</field> -->
+        <field name="domain">[]</field>
+
+    </record>
+
+    
+    <menuitem id="menu_poli_dashboard" name="Dashboard" action="poli_dashboard_kanban_action" parent="menu_loket_root" sequence="1" />
+
+</odoo>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="queue_list_tree">
+            <field name="name">queue.list.tree</field>
+            <field name="model">queue.list</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="tanggal"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record model="ir.ui.view" id="queue_list_form">
+            <field name="name">queue.list.form</field>
+            <field name="model">queue.list</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button type="object" name="action_lock" class="btn btn-primary" string="Lock" states="open" />
+                        <button type="object" name="action_reset" class="btn btn-warning" string="Reset"  states="lock" />
+                        <field name="state" widget="statusbar" />
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="tanggal"/>
+                            </group>
+                            <group>
+                                <field name="name" invisible="1" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="queue_list_action">
+            <field name="name">Queue List</field>
+            <field name="res_model">queue.list</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="menu_queue_list" name="Queue List" parent="menu_loket_toolbar" action="queue_list_action" sequence="1"/>
+
+    </data>
+</odoo>

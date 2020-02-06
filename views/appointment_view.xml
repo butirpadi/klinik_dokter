@@ -1,0 +1,101 @@
+<odoo>
+    <data>
+
+        <!-- primary|extension Inherited .:Tree:. view for "model" -->
+        <record id="klinik_view_order_tree_inherited" model="ir.ui.view">
+            <field name="name">klinik.view.order.tree.inherited</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree" />
+            <field name="type">tree</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='expected_date']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='commitment_date']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='amount_total']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="string">Pasien</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- primary|extension Inherited .:Form:. view for "model" -->
+        <record id="klinik_view_order_form" model="ir.ui.view">
+            <field name="name">klinik.view.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="type">form</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='other_information']" position="attributes">
+                    <attribute name="groups">base.group_system</attribute>
+                </xpath>
+                <!-- <xpath expr="//field[@name='partner_id']" position="replace">
+                    <field name="partner_id" widget="res_partner_many2one" context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True, 'show_phone' : True}" options="{&quot;always_reload&quot;: True}"/>
+
+                </xpath> -->
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="rm_no" string ="MR No." />
+                    <field name="poli_id" options="{ 'no_open': True, 'no_create' : True, 'no_edit' : True}" required="1" />
+
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="string">Pasien</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='payment_term_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='validity_date']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <xpath expr="//button[@name='preview_sale_order']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <xpath expr="//tree/control" position="replace" />
+            </field>
+        </record>
+
+        <record id="klinik_sale_management_sale_order_form_quote" model="ir.ui.view">
+            <field name="name">klinik_sale_management_sale_order_form_quote</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_management.sale_order_form_quote"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='optional_products']" position="attributes">
+                    <attribute name="groups">base.group_system</attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="appointment_order_action" model="ir.actions.act_window">
+            <field name="name">Appointment Order</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('klinik_view_order_tree_inherited')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('klinik_view_order_form')})]"/>
+        </record>
+
+        <menuitem id="menu_appointment_order" name="Appointment Order" parent="menu_appointment_toolbar" action="appointment_order_action" sequence="1"/>
+
+
+
+
+    </data>
+</odoo>

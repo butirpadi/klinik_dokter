@@ -110,7 +110,7 @@
         <menuitem id="menu_loket_root" name="Klinik Management" sequence="1" />
         <menuitem id="menu_pasien_toolbar" name="Pasien" parent="menu_loket_root" sequence="2" />
         <menuitem id="menu_appointment_toolbar" name="Appointment" parent="menu_loket_root" sequence="3" />
-        <menuitem id="menu_klinik_configuration_toolbar" name="Configuration" parent="menu_loket_root" sequence="99" />
+        <menuitem id="menu_klinik_configuration_toolbar" name="Configuration" parent="menu_loket_root" sequence="99" groups="sales_team.group_sale_manager" />
 
         <menuitem id="menu_pasien" name="Pasien" parent="menu_pasien_toolbar" action="registrasi_pasien_action" sequence="2"/>
 

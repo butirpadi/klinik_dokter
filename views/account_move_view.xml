@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="account_move_form_klinik">
+            <field name="name">account.move.form.klinik</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_post']" position="before">
+                    <button name="action_post_mirror" type="object" string="Post" class="btn btn-primary" attrs="{'invisible':[('state', 'in', ['posted','cancel'])]}" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

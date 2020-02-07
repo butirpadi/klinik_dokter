@@ -19,7 +19,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'product', 'sale', 'sale_management'],
+    'depends': ['base', 'product', 'sale', 'sale_management', 'sales_team'],
 
     # always loaded
     'data': [
@@ -33,6 +33,7 @@
         'views/poli_dashboard_view.xml',
         'views/appointment_view.xml',
         'views/klinik_setting_view.xml',
+        # 'views/account_move_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

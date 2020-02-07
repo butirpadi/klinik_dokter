@@ -9,3 +9,4 @@ from . import Product
 from . import klinik_dashboard
 from . import sale_order
 from . import klinik_setting
+# from . import account_move

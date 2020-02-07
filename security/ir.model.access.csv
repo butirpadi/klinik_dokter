@@ -1,6 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_klinik_dokter_queue_list,klinik_dokter.queue_list,model_queue_list,base.group_user,1,1,1,1
 access_klinik_dokter_product_queue_list_rel,klinik_dokter.product_queue_list_rel,model_product_queue_list_rel,base.group_user,1,1,1,1
-access_klinik_dokter_res_poli,klinik_dokter.res_poli,model_res_poli,base.group_user,1,1,1,1
-access_klinik_dokter_klinik_dashboard,klinik_dokter.klinik_dashboard,model_klinik_dashboard,base.group_user,1,1,1,1
-access_klinik_dokter_klinik_setting,klinik_dokter.klinik_setting,model_klinik_setting,base.group_user,1,1,1,1
+access_klinik_dokter_klinik_dashboard,klinik_dokter.klinik_dashboard,model_klinik_dashboard,base.group_system,1,1,1,1
+access_klinik_dokter_res_poli_user,klinik_dokter.res_poli_user,model_res_poli,base.group_user,1,0,0,0
+access_klinik_dokter_res_poli_system,klinik_dokter.res_poli_system,model_res_poli,sales_team.group_sale_manager,1,1,1,1
+access_klinik_dokter_klinik_setting,klinik_dokter.klinik_setting,model_klinik_setting,base.group_system,1,1,1,1

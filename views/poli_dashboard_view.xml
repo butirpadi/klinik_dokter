@@ -3,7 +3,7 @@
         <field name="name">poli.dashboard.kanban.view</field>
         <field name="model">res.poli</field>
         <field name="arch" type="xml">
-            <kanban create="false" class="oe_background_grey o_kanban_dashboard o_account_kanban" >
+            <kanban create="false" class="oe_background_grey o_kanban_dashboard o_account_kanban">
                 <field name="id"/>
                 <field name="name"/>
                 <field name="color"/>
@@ -17,11 +17,41 @@
                             <t t-call="JournalTop"/>
                             <div t-att-class="'container o_kanban_card_content'">
                                 <div class="row">
-                                    
+                                    <!-- <div class="col-5 o_kanban_primary_left text-center">
+                                        <p>Jumlah Kunjungan</p>
+                                        <p style="font-size:64pt;color:green;font-weight:bolder;">
+                                            <field name="jumlah_antrian" />
+                                        </p>
+                                    </div>
+                                    <div class="col-7 o_kanban_primary_right">
+                                    </div> -->
+                                    <div class="col-4 text-center">
+                                        <p>Jumlah Kunjungan</p>
+                                        <p style="font-size:48pt;color:green;font-weight:bolder;">
+                                            <field name="jumlah_antrian" />
+                                        </p>
+                                    </div>
+                                    <div class="col-4"></div>
+                                    <div class="col-4"></div>
                                 </div>
+
+                                <field name="kanban_dashboard_graph" t-att-graph_type="'line'" widget="dashboard_graph"/>
                             </div>
                             <div class="container o_kanban_card_manage_pane dropdown-menu" role="menu">
+                                <div t-if="widget.editable" class="o_kanban_card_manage_settings row">
+                                    <div class="col-8">
+                                        <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                    </div>
+                                </div>
 
+                                <div groups="account.group_account_manager" class="row o_kanban_card_settings">
+                                    <div class="col-6">
+
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <a t-if="widget.editable" type="edit">Settings</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </t>
@@ -61,7 +91,7 @@
 
     </record>
 
-    
+
     <menuitem id="menu_poli_dashboard" name="Dashboard" action="poli_dashboard_kanban_action" parent="menu_loket_root" sequence="1" />
 
 </odoo>
